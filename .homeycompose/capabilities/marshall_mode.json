@@ -1,0 +1,42 @@
+{
+    "type": "enum",
+    "title": { 
+        "en": "Marshall Mode Picker"
+    },
+    "values": [
+        {
+            "id": "0",
+            "title": {
+                "en": "Aux"
+            }
+        },
+        {
+            "id": "7",
+            "title": {
+                "en": "RCA"
+            }
+        },
+        {
+            "id": "5",
+            "title": {
+                "en": "Bluetooth"
+            }
+        },
+        {
+            "id": "6",
+            "title": {
+                "en": "Radio"
+            }
+        },
+        {
+            "id": "8",
+            "title": {
+                "en": "Spotify"
+            }
+        }
+    ],
+    "getable": true,
+    "setable": true,
+    "uiComponent": "picker",
+    "uiQuickAction": true
+  }

@@ -1,0 +1,79 @@
+{
+  "id": "marshall-speaker",
+  "name": {
+    "en": "Marshall Speaker"
+  },
+  "class": "speaker",
+  "capabilities": [
+    "volume_set",
+    "marshall_mode"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "lan"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "en": "General Settings"
+      },
+      "collapsed": false,
+      "children": [
+        {
+          "id": "address",
+          "type": "text",
+          "label": {
+            "en": "IP Address",
+            "dk": "IP Adresse"
+          },
+          "placeholder": {
+            "en": "IP Address",
+            "dk": "IP Adresse"
+          },
+          "value": "127.0.0.1",
+          "hint": {
+            "en": "The IP address of the Marshall Speaker",
+            "dk": "IP adressen på Marshall højttaleren"
+          }
+        },
+        {
+          "id": "pincode",
+          "type": "text",
+          "label": {
+            "en": "PIN Code",
+            "dk": "PIN kode"
+          },
+          "placeholder": {
+            "en": "PIN Code",
+            "dk": "PIN kode"
+          },
+          "value": "0000",
+          "hint": {
+            "en": "The PIN code of the Marshall Speaker",
+            "dk": "PIN koden på Marshall højttaleren"
+          }
+        }
+      ]
+    }
+  ],
+  "discovery": "marshall_speaker_mdns",
+  "pair": [
+    {
+      "id": "list_my_devices",
+      "template": "list_devices",
+      "navigation": { "next": "add_my_devices" }
+    },
+    {
+      "id": "add_my_devices",
+      "template": "add_devices"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "marshall_mode_changed",
+  "title": {
+    "en": "The mode has changed"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=marshall-speaker"
+    }
+  ]
+}

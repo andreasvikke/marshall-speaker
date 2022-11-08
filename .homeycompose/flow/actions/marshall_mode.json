@@ -1,0 +1,25 @@
+{
+  "id": "marshall_mode",
+  "title": {
+    "en": "Set Mode"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=marshall-speaker"
+    },
+    {
+      "type": "dropdown",
+      "name": "mode",
+      "title": { "en": "Mode to enable" },
+      "values": [
+        { "id": "0", "label": { "en": "AUX" } },
+        { "id": "7", "label": { "en": "RCA" } },
+        { "id": "5", "label": { "en": "Bluetooth" } },
+        { "id": "6", "label": { "en": "Radio" } },
+        { "id": "8", "label": { "en": "Spotify" } }
+      ]
+    }
+  ]
+}
