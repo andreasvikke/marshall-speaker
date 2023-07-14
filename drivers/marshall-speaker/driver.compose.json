@@ -1,7 +1,8 @@
 {
   "id": "marshall-speaker",
   "name": {
-    "en": "Marshall Speaker"
+    "en": "Marshall Speaker",
+    "da": "Marshall Højttaler"
   },
   "class": "speaker",
   "capabilities": [
@@ -23,7 +24,8 @@
     {
       "type": "group",
       "label": {
-        "en": "General Settings"
+        "en": "General Settings",
+        "da": "Generelle indstillinger"
       },
       "collapsed": false,
       "children": [
@@ -32,16 +34,16 @@
           "type": "text",
           "label": {
             "en": "IP Address",
-            "dk": "IP Adresse"
+            "da": "IP Adresse"
           },
           "placeholder": {
             "en": "IP Address",
-            "dk": "IP Adresse"
+            "da": "IP Adresse"
           },
           "value": "127.0.0.1",
           "hint": {
             "en": "The IP address of the Marshall Speaker",
-            "dk": "IP adressen på Marshall højttaleren"
+            "da": "IP adressen på Marshall højttaleren"
           }
         },
         {
@@ -49,16 +51,16 @@
           "type": "text",
           "label": {
             "en": "PIN Code",
-            "dk": "PIN kode"
+            "da": "PIN kode"
           },
           "placeholder": {
             "en": "PIN Code",
-            "dk": "PIN kode"
+            "da": "PIN kode"
           },
           "value": "0000",
           "hint": {
             "en": "The PIN code of the Marshall Speaker",
-            "dk": "PIN koden på Marshall højttaleren"
+            "da": "PIN koden på Marshall højttaleren"
           }
         }
       ]
@@ -69,7 +71,9 @@
     {
       "id": "list_my_devices",
       "template": "list_devices",
-      "navigation": { "next": "add_my_devices" }
+      "navigation": {
+        "next": "add_my_devices"
+      }
     },
     {
       "id": "add_my_devices",

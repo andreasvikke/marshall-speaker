@@ -1,17 +1,20 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "dk.andreasvikke.marshall-speaker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
+  "brandColor": "#c4a874",
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Marshall Speaker"
+    "en": "Marshall Speaker",
+    "da": "Marshall Højttaler"
   },
   "description": {
-    "en": "Adds support for Marshall Speaker Devices."
+    "en": "Bring the big stage home.",
+    "da": "Tag den store scene med hjem."
   },
   "category": [
     "music"
@@ -24,14 +27,42 @@
   },
   "author": {
     "name": "Andreas Vikke",
-    "email": "andreasvikke@gmail.com"
+    "email": ""
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "andreasvikke"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/andreasvikke/marshall-speaker/issues"
+  },
+  "source": "https://github.com/andreasvikke/marshall-speaker",
+  "tags": {
+    "en": [
+      "Marshall",
+      "Speakers",
+      "Music",
+      "Sound",
+      "Hifi"
+    ],
+    "da": [
+      "Marshall",
+      "Højttaler",
+      "Musik",
+      "Lyd",
+      "Hifi"
+    ]
   },
   "flow": {
     "triggers": [
       {
         "id": "marshall_mode_changed",
         "title": {
-          "en": "The mode has changed"
+          "en": "The mode has changed",
+          "da": "Tilstanden er ændret"
         },
         "args": [
           {
@@ -42,11 +73,19 @@
         ]
       }
     ],
-    "actions": [
+    "conditions": [
       {
-        "id": "marshall_mode",
         "title": {
-          "en": "Set Mode"
+          "en": "The mode is ",
+          "da": "Tilstanden er "
+        },
+        "titleFormatted": {
+          "en": "The mode is [[mode]]",
+          "da": "Tilstanden er [[mode]]"
+        },
+        "hint": {
+          "en": "Checks if the mode is in a specific state",
+          "da": "Kontrollerer, om tilstanden er i en bestemt tilstand"
         },
         "args": [
           {
@@ -58,37 +97,109 @@
             "type": "dropdown",
             "name": "mode",
             "title": {
-              "en": "Mode to enable"
+              "en": "Mode",
+              "da": "Tilstand"
             },
             "values": [
               {
                 "id": "0",
                 "label": {
-                  "en": "AUX"
+                  "en": "AUX",
+                  "da": "AUX"
                 }
               },
               {
                 "id": "7",
                 "label": {
-                  "en": "RCA"
+                  "en": "RCA",
+                  "da": "RCA"
                 }
               },
               {
                 "id": "5",
                 "label": {
-                  "en": "Bluetooth"
+                  "en": "Bluetooth",
+                  "da": "Bluetooth"
                 }
               },
               {
                 "id": "6",
                 "label": {
-                  "en": "Radio"
+                  "en": "Radio",
+                  "da": "Radio"
                 }
               },
               {
                 "id": "8",
                 "label": {
-                  "en": "Spotify"
+                  "en": "Spotify",
+                  "da": "Spotify"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "marshall_mode"
+      }
+    ],
+    "actions": [
+      {
+        "id": "marshall_mode",
+        "title": {
+          "en": "Set Mode to",
+          "da": "Sæt Tilstand til"
+        },
+        "titleFormatted": {
+          "en": "Set Mode to [[mode]]",
+          "da": "Sæt Tilstand til [[mode]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=marshall-speaker"
+          },
+          {
+            "type": "dropdown",
+            "name": "mode",
+            "title": {
+              "en": "Mode",
+              "da": "Tilstand"
+            },
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "AUX",
+                  "da": "AUX"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "RCA",
+                  "da": "RCA"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "Bluetooth",
+                  "da": "Bluetooth"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "Radio",
+                  "da": "Radio"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "Spotify",
+                  "da": "Spotify"
                 }
               }
             ]
@@ -101,7 +212,8 @@
     {
       "id": "marshall-speaker",
       "name": {
-        "en": "Marshall Speaker"
+        "en": "Marshall Speaker",
+        "da": "Marshall Højttaler"
       },
       "class": "speaker",
       "capabilities": [
@@ -123,7 +235,8 @@
         {
           "type": "group",
           "label": {
-            "en": "General Settings"
+            "en": "General Settings",
+            "da": "Generelle indstillinger"
           },
           "collapsed": false,
           "children": [
@@ -132,16 +245,16 @@
               "type": "text",
               "label": {
                 "en": "IP Address",
-                "dk": "IP Adresse"
+                "da": "IP Adresse"
               },
               "placeholder": {
                 "en": "IP Address",
-                "dk": "IP Adresse"
+                "da": "IP Adresse"
               },
               "value": "127.0.0.1",
               "hint": {
                 "en": "The IP address of the Marshall Speaker",
-                "dk": "IP adressen på Marshall højttaleren"
+                "da": "IP adressen på Marshall højttaleren"
               }
             },
             {
@@ -149,16 +262,16 @@
               "type": "text",
               "label": {
                 "en": "PIN Code",
-                "dk": "PIN kode"
+                "da": "PIN kode"
               },
               "placeholder": {
                 "en": "PIN Code",
-                "dk": "PIN kode"
+                "da": "PIN kode"
               },
               "value": "0000",
               "hint": {
                 "en": "The PIN code of the Marshall Speaker",
-                "dk": "PIN koden på Marshall højttaleren"
+                "da": "PIN koden på Marshall højttaleren"
               }
             }
           ]
@@ -184,37 +297,43 @@
     "marshall_mode": {
       "type": "enum",
       "title": {
-        "en": "Marshall Mode Picker"
+        "en": "Marshall Mode Picker",
+        "da": "Marshall Tilstand Vælger"
       },
       "values": [
         {
           "id": "0",
           "title": {
-            "en": "Aux"
+            "en": "AUX",
+            "da": "AUX"
           }
         },
         {
           "id": "7",
           "title": {
-            "en": "RCA"
+            "en": "RCA",
+            "da": "RCA"
           }
         },
         {
           "id": "5",
           "title": {
-            "en": "Bluetooth"
+            "en": "Bluetooth",
+            "da": "Bluetooth"
           }
         },
         {
           "id": "6",
           "title": {
-            "en": "Radio"
+            "en": "Radio",
+            "da": "Radio"
           }
         },
         {
           "id": "8",
           "title": {
-            "en": "Spotify"
+            "en": "Spotify",
+            "da": "Spotify"
           }
         }
       ],

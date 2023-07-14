@@ -1,7 +1,8 @@
 {
   "id": "marshall_mode_changed",
   "title": {
-    "en": "The mode has changed"
+    "en": "The mode has changed",
+    "da": "Tilstanden er ændret"
   },
   "args": [
     {

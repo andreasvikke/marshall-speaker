@@ -1,6 +1,6 @@
-import Homey from 'homey';
+import { Driver } from 'homey';
 
-class MarshallSpeakerDriver extends Homey.Driver {
+class MarshallSpeakerDriver extends Driver {
 
   /**
    * onInit is called when the driver is initialized.
