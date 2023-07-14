@@ -1,8 +1,8 @@
-import Homey from 'homey';
+import { Device, FlowCardCondition } from 'homey';
 
 import MarshallAPIManager from '../../managers/marshall-api-manager';
 
-class MarshallSpeakerDevice extends Homey.Device {
+class MarshallSpeakerDevice extends Device {
   marshallAPIManager!: MarshallAPIManager;
 
   speakerStatusTimeout: NodeJS.Timeout | undefined;
@@ -15,17 +15,15 @@ class MarshallSpeakerDevice extends Homey.Device {
     this.log('MarshallSpeakerDevice has been initialized');
     this.marshallAPIManager = new MarshallAPIManager(this.getStoreValue('address'), this.getStoreValue('pincode'), this.getStoreValue('api'));
 
-
     this.registerCapabilityListener("volume_set", async (value) => {
       await this.marshallAPIManager.setVolume(value);
     });
 
-    // const modeChangeTrigger = this.homey.flow.getTriggerCard('marshall_mode_changed');
+    const modeChangeTrigger = this.homey.flow.getDeviceTriggerCard('marshall_mode_changed');
     this.registerCapabilityListener("marshall_mode", async (value) => {
       await this.marshallAPIManager.setMode(value);
-      // modeChangeTrigger.trigger()
-      //   .then(this.log)
-      //   .catch(this.error);
+      modeChangeTrigger.trigger(this)
+        .catch(this.error);
     });
 
     const modeChanged = this.homey.flow.getActionCard('marshall_mode');
@@ -35,6 +33,15 @@ class MarshallSpeakerDevice extends Homey.Device {
       this.setCapabilityValue('marshall_mode', mode);
       await this.marshallAPIManager.setMode(mode);
     });
+
+
+    const modeIs = this.homey.flow.getConditionCard("marshall_mode");
+    modeIs.registerRunListener(async (args, state) => {
+      const { mode } = args;
+      this.log(`Checking if mode is ${mode}`);
+      return this.getCapabilityValue('marshall_mode') === mode;
+    })
+
 
     this.scheduleSpeakerStatus();
   }
@@ -110,9 +117,12 @@ class MarshallSpeakerDevice extends Homey.Device {
         this.clearSpeakerStatusTimeout();
         const status = await this.marshallAPIManager.getStatus();
         this.setCapabilityValue('volume_set', status.volume);
-        this.setCapabilityValue('marshall_mode', status.mode);
+        if (status.mode in this.marshallAPIManager.getMappedModes())
+          this.setCapabilityValue('marshall_mode', status.mode);
+        else
+          this.error(`Mode ${status.mode} is not supported`);
       } catch (err) {
-          this.error('Check Speacker status failed', err);
+          this.error('Check Speaker status failed', err);
       } finally {
           this.scheduleSpeakerStatus();
       }

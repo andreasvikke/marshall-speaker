@@ -7,6 +7,14 @@ const endpoints = {
   mode: 'netremote.sys.mode'
 }
 
+const mappedModes = [
+  0, // AUX
+  7, // RCA
+  5, // Bluetooth
+  6, // Radio
+  8, // Spotify
+]
+
 class MarshallAPIManager {
   host: string;
   pin: string;
@@ -76,6 +84,10 @@ class MarshallAPIManager {
     }
 
     return {};
+  }
+
+  getMappedModes(): number[] {
+    return mappedModes;
   }
 
   async _parseXml(xml: string): Promise<anyObject> {

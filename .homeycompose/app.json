@@ -1,16 +1,19 @@
 {
   "id": "dk.andreasvikke.marshall-speaker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
+  "brandColor": "#c4a874",
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Marshall Speaker"
+    "en": "Marshall Speaker",
+    "da": "Marshall Højttaler"
   },
   "description": {
-    "en": "Adds support for Marshall Speaker Devices."
+    "en": "Bring the big stage home.",
+    "da": "Tag den store scene med hjem."
   },
   "category": [
     "music"
@@ -23,6 +26,33 @@
   },
   "author": {
     "name": "Andreas Vikke",
-    "email": "andreasvikke@gmail.com"
+    "email": ""
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "andreasvikke"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/andreasvikke/marshall-speaker/issues"
+  },
+  "source": "https://github.com/andreasvikke/marshall-speaker",
+  "tags": {
+    "en": [
+      "Marshall",
+      "Speakers",
+      "Music",
+      "Sound",
+      "Hifi"
+    ],
+    "da": [
+      "Marshall",
+      "Højttaler",
+      "Musik",
+      "Lyd",
+      "Hifi"
+    ]
   }
 }

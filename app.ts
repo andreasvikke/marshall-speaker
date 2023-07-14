@@ -1,6 +1,6 @@
-import Homey from 'homey';
+import { App } from 'homey';
 
-class MarshallSpeakerApp extends Homey.App {
+class MarshallSpeakerApp extends App {
 
   /**
    * onInit is called when the app is initialized.

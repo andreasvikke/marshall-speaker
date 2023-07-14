@@ -1,37 +1,43 @@
 {
     "type": "enum",
-    "title": { 
-        "en": "Marshall Mode Picker"
+    "title": {
+        "en": "Marshall Mode Picker",
+        "da": "Marshall Tilstand Vælger"
     },
     "values": [
         {
             "id": "0",
             "title": {
-                "en": "Aux"
+                "en": "AUX",
+                "da": "AUX"
             }
         },
         {
             "id": "7",
             "title": {
-                "en": "RCA"
+                "en": "RCA",
+                "da": "RCA"
             }
         },
         {
             "id": "5",
             "title": {
-                "en": "Bluetooth"
+                "en": "Bluetooth",
+                "da": "Bluetooth"
             }
         },
         {
             "id": "6",
             "title": {
-                "en": "Radio"
+                "en": "Radio",
+                "da": "Radio"
             }
         },
         {
             "id": "8",
             "title": {
-                "en": "Spotify"
+                "en": "Spotify",
+                "da": "Spotify"
             }
         }
     ],
@@ -39,4 +45,4 @@
     "setable": true,
     "uiComponent": "picker",
     "uiQuickAction": true
-  }
+}

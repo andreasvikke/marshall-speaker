@@ -1,12 +1,15 @@
 {
-  "id": "marshall_mode",
   "title": {
-    "en": "Set Mode to",
-    "da": "Sæt Tilstand til"
+    "en": "The mode is ",
+    "da": "Tilstanden er "
   },
   "titleFormatted": {
-    "en": "Set Mode to [[mode]]",
-    "da": "Sæt Tilstand til [[mode]]"
+    "en": "The mode is [[mode]]",
+    "da": "Tilstanden er [[mode]]"
+  },
+  "hint": {
+    "en": "Checks if the mode is in a specific state",
+    "da": "Kontrollerer, om tilstanden er i en bestemt tilstand"
   },
   "args": [
     {
