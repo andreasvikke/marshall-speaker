@@ -1,4 +1,4 @@
-Control your Marshall Speaker Devices from within Homey.
+Control your Marshall Speaker Devices from within Homey (only Wi-Fi Speakers).
 
 Features included, currently are:
 - Control Volume of the speakers

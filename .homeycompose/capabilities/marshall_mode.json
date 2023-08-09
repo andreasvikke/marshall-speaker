@@ -13,10 +13,17 @@
             }
         },
         {
-            "id": "7",
+            "id": "1",
             "title": {
-                "en": "RCA",
-                "da": "RCA"
+                "en": "Airplay",
+                "da": "Airplay"
+            }
+        },
+        {
+            "id": "2",
+            "title": {
+                "en": "Audsync",
+                "da": "Audsync"
             }
         },
         {
@@ -34,10 +41,24 @@
             }
         },
         {
+            "id": "7",
+            "title": {
+                "en": "RCA",
+                "da": "RCA"
+            }
+        },
+        {
             "id": "8",
             "title": {
                 "en": "Spotify",
                 "da": "Spotify"
+            }
+        },
+        {
+            "id": "9",
+            "title": {
+                "en": "Standby",
+                "da": "Standby"
             }
         }
     ],
