@@ -4,5 +4,8 @@
   },
   "1.0.1": {
     "en": "Init Publish"
+  },
+  "2.0.0": {
+    "en": "Changed backend manager to new module"
   }
 }
