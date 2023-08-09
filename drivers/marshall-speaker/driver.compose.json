@@ -1,8 +1,8 @@
 {
   "id": "marshall-speaker",
   "name": {
-    "en": "Marshall Speaker",
-    "da": "Marshall Højttaler"
+    "en": "Marshall Speaker Wi-Fi",
+    "da": "Marshall Højttaler Wi-Fi"
   },
   "class": "speaker",
   "capabilities": [

@@ -18,8 +18,6 @@ class MarshallSpeakerDriver extends Driver {
     const discoveryResult = discoveryStrategy.getDiscoveryResults();
 
     const devices = Object.values(discoveryResult).map(discoveryResult => {
-      let txt: any = ('txt' in discoveryResult ? discoveryResult.txt : null)
-
       return {
         name: "name" in discoveryResult ? discoveryResult.name : "Marshall Speaker",
 
@@ -33,7 +31,6 @@ class MarshallSpeakerDriver extends Driver {
         },
         store: {
           address: discoveryResult.address,
-          api: 'fsapilocation' in txt ? txt.fsapilocation : null,
           pincode: '1234',
         }
       };

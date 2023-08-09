@@ -109,10 +109,17 @@
                 }
               },
               {
-                "id": "7",
+                "id": "1",
                 "label": {
-                  "en": "RCA",
-                  "da": "RCA"
+                  "en": "Airplay",
+                  "da": "Airplay"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Audsync",
+                  "da": "Audsync"
                 }
               },
               {
@@ -130,10 +137,24 @@
                 }
               },
               {
+                "id": "7",
+                "label": {
+                  "en": "RCA",
+                  "da": "RCA"
+                }
+              },
+              {
                 "id": "8",
                 "label": {
                   "en": "Spotify",
                   "da": "Spotify"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "Standby",
+                  "da": "Standby"
                 }
               }
             ]
@@ -175,10 +196,17 @@
                 }
               },
               {
-                "id": "7",
+                "id": "1",
                 "label": {
-                  "en": "RCA",
-                  "da": "RCA"
+                  "en": "Airplay",
+                  "da": "Airplay"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Audsync",
+                  "da": "Audsync"
                 }
               },
               {
@@ -196,10 +224,24 @@
                 }
               },
               {
+                "id": "7",
+                "label": {
+                  "en": "RCA",
+                  "da": "RCA"
+                }
+              },
+              {
                 "id": "8",
                 "label": {
                   "en": "Spotify",
                   "da": "Spotify"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "Standby",
+                  "da": "Standby"
                 }
               }
             ]
@@ -212,8 +254,8 @@
     {
       "id": "marshall-speaker",
       "name": {
-        "en": "Marshall Speaker",
-        "da": "Marshall Højttaler"
+        "en": "Marshall Speaker Wi-Fi",
+        "da": "Marshall Højttaler Wi-Fi"
       },
       "class": "speaker",
       "capabilities": [
@@ -309,10 +351,17 @@
           }
         },
         {
-          "id": "7",
+          "id": "1",
           "title": {
-            "en": "RCA",
-            "da": "RCA"
+            "en": "Airplay",
+            "da": "Airplay"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "Audsync",
+            "da": "Audsync"
           }
         },
         {
@@ -330,10 +379,24 @@
           }
         },
         {
+          "id": "7",
+          "title": {
+            "en": "RCA",
+            "da": "RCA"
+          }
+        },
+        {
           "id": "8",
           "title": {
             "en": "Spotify",
             "da": "Spotify"
+          }
+        },
+        {
+          "id": "9",
+          "title": {
+            "en": "Standby",
+            "da": "Standby"
           }
         }
       ],
