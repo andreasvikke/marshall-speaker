@@ -7,11 +7,11 @@ if (!globalThis.fetch) {
 Support for interaction with Frontier Silicon Devices
 For example internet radios from: Medion, Hama, Auna, ...*/
 class MarshallAPIManager {
-    constructor(fsapi_device_url, pin, timeout = DEFAULT_TIMEOUT_IN_SECONDS) {
+    constructor(fsapiDeviceUrl, pin, timeout = DEFAULT_TIMEOUT_IN_SECONDS) {
         this.pin = pin;
         this.sid = null;
         this.webfsapi = null;
-        this.fsapi_device_url = fsapi_device_url;
+        this.fsapiDeviceUrl = fsapiDeviceUrl;
         this.timeout = timeout;
         this.fixedMaxVolume = 32;
         this.DEFAULT_TIMEOUT_IN_SECONDS= 1, 
@@ -22,29 +22,45 @@ class MarshallAPIManager {
                 "3": "paused"
             }
     }
+
+    async healthCheck() {
+        const response = await fetch(this.fsapiDeviceUrl);
+        if (!response.ok){
+            throw new Error(response.statusText);
+        }
+    }
+
     async init(){
-        this.webfsapi = await this.get_fsapi_endpoint()
-        this.sid = await this.create_session()
-        await this.get_mode_list()
+        try {
+            this.webfsapi = await this.get_fsapi_endpoint()
+            this.sid = await this.create_session()
+            this.modes = await this.get_modes()
+        }
+        catch (error) {
+            if (error) {
+                throw new Error(error.message)
+            }
+        }
     }
 
     async get_fsapi_endpoint() {
         try { 
-            let response = await fetch(this.fsapi_device_url)
+            let response = await fetch(this.fsapiDeviceUrl)
             let str = await response.text()
             let data = convert.xml2js(str, {compact: true, spaces: 4});
             return data.netRemote.webfsapi._text
         } catch (error) {
             if (error) {
-                return error.message
+                throw new Error(error.message)
             }
         }
     }
     async create_session() {
         let session = await this.call("CREATE_SESSION")
+        if (session.sessionId === undefined || session.sessionId === null) {
+            throw Error("Could not create session")
+        }
         return session.sessionId._text
-
-        //return doc.sessionId.text;
     }
     create_query_params(params) {
         var esc = encodeURIComponent;
@@ -66,7 +82,7 @@ class MarshallAPIManager {
             return data.fsapiResponse
         } catch (error) {
             if (error) {
-                return error.message
+                throw new Error(error.message + ": " + path);
             }
         }
     }
@@ -162,7 +178,6 @@ class MarshallAPIManager {
         return await this.handle_list("netRemote.sys.caps.validModes");
     }
     async get_mode_list() {
-        this.modes = await this.get_modes()
         return this.modes
     }
     async get_mode() {

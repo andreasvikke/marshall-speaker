@@ -27,6 +27,13 @@
             }
         },
         {
+            "id": "3",
+            "title": {
+                "en": "AudsyncMC",
+                "da": "AudsyncMC"
+            }
+        },
+        {
             "id": "5",
             "title": {
                 "en": "Bluetooth",

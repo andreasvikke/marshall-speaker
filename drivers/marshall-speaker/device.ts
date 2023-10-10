@@ -6,15 +6,15 @@ class MarshallSpeakerDevice extends Device {
   marshallAPIManager!: MarshallAPIManager;
 
   speakerStatusTimeout: NodeJS.Timeout | undefined;
-  deleated: boolean = false;
+  deleted: boolean = false;
 
   /**
    * onInit is called when the device is initialized.
    */
   async onInit() {
-    this.log('MarshallSpeakerDevice has been initialized');
+    this.log('MarshallSpeakerDevice is beeing initialized');
     this.marshallAPIManager = new MarshallAPIManager(`http://${this.getStoreValue('address')}/device`, this.getStoreValue('pincode'), 10);
-    await this.marshallAPIManager.init()
+    await this.checkSpeakerAvailability();
 
     this.registerCapabilityListener("volume_set", async (value) => {
       await this.marshallAPIManager.set_volume(value);
@@ -35,7 +35,6 @@ class MarshallSpeakerDevice extends Device {
       await this.marshallAPIManager.set_mode(mode);
     });
 
-
     const modeIs = this.homey.flow.getConditionCard("marshall_mode");
     modeIs.registerRunListener(async (args, state) => {
       const { mode } = args;
@@ -45,6 +44,7 @@ class MarshallSpeakerDevice extends Device {
 
 
     this.scheduleSpeakerStatus();
+    this.log('MarshallSpeakerDevice has been initialized');
   }
 
   /**
@@ -67,7 +67,7 @@ class MarshallSpeakerDevice extends Device {
    * @param {string[]} event.changedKeys An array of keys changed since the previous version
    * @returns {Promise<string|void>} return a custom message that will be displayed
    */
-  async onSettings(event: { oldSettings: {[key: string]: any}, newSettings: {[key: string]: any}, changedKeys: string[] }): Promise<string|void> {
+  async onSettings(event: { oldSettings: { [key: string]: any }, newSettings: { [key: string]: any }, changedKeys: string[] }): Promise<string | void> {
     this.log('MarshallSpeakerDevice settings where changed');
 
     event.changedKeys.forEach(async changedKey => {
@@ -93,7 +93,7 @@ class MarshallSpeakerDevice extends Device {
    */
   async onDeleted() {
     this.log('MarshallSpeakerDevice has been deleted');
-    this.deleated = true
+    this.deleted = true
     this.clearSpeakerStatusTimeout();
   }
 
@@ -105,32 +105,56 @@ class MarshallSpeakerDevice extends Device {
   }
 
   async scheduleSpeakerStatus(timeoutSeconds = 10) {
-    if (this.deleated)
+    if (this.deleted)
       return;
     this.clearSpeakerStatusTimeout();
     this.speakerStatusTimeout = setTimeout(this.checkSpeakerStatus.bind(this), timeoutSeconds * 1000);
   }
 
   async checkSpeakerStatus() {
-      if (this.deleated)
-          return;
-      try {
-        this.clearSpeakerStatusTimeout();
-        const volume = await this.marshallAPIManager.get_volume();
-        const mode = await this.marshallAPIManager.get_mode() as string
-        const mode_index = (await this.marshallAPIManager.get_mode_list() as string[]).indexOf(mode).toString()
+    if (this.deleted) {
+      return;
+    }
 
-        if (volume !== undefined)
+    await this.checkSpeakerAvailability();
+    
+    try {
+      this.clearSpeakerStatusTimeout();
+
+      if (this.getAvailable()) {
+        const [volume, mode, modeList] = await Promise.all([
+          this.marshallAPIManager.get_volume(),
+          this.marshallAPIManager.get_mode() as Promise<string>,
+          this.marshallAPIManager.get_mode_list() as Promise<string[]>
+        ]);
+
+        if (volume !== undefined) {
           this.setCapabilityValue('volume_set', volume);
-        if (mode !== undefined)
-          this.setCapabilityValue('marshall_mode', mode_index);
-      } catch (err) {
-          this.error('Check Speaker status failed', err);
-      } finally {
-          this.scheduleSpeakerStatus();
+        }
+        if (mode !== undefined) {
+          const modeIndex = modeList.indexOf(mode).toString();
+          this.setCapabilityValue('marshall_mode', modeIndex);
+        }
       }
+    } catch (err) {
+      this.error('Check Speaker status failed', err);
+    } finally {
+      this.scheduleSpeakerStatus();
+    }
   }
 
+  async checkSpeakerAvailability() {
+    try {
+      await this.marshallAPIManager.healthCheck();
+      if (this.marshallAPIManager.sid === null) {
+        await this.marshallAPIManager.init();
+      }
+      await this.setAvailable();
+    } catch (error) {
+      await this.setUnavailable().catch(this.error);
+      this.marshallAPIManager.sid = null;
+    }
+  }
 }
 
 module.exports = MarshallSpeakerDevice;
