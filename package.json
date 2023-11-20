@@ -1,6 +1,7 @@
 {
   "name": "dk.andreasvikke.marshall-speaker",
   "version": "1.0.0",
+  "type": "commonjs",
   "main": "app.ts",
   "scripts": {
     "build": "tsc",
