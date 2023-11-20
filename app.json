@@ -123,6 +123,20 @@
                 }
               },
               {
+                "id": "3",
+                "title": {
+                  "en": "AudsyncMC",
+                  "da": "AudsyncMC"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Google Cast",
+                  "da": "Google Cast"
+                }
+              },
+              {
                 "id": "5",
                 "label": {
                   "en": "Bluetooth",
@@ -207,6 +221,20 @@
                 "label": {
                   "en": "Audsync",
                   "da": "Audsync"
+                }
+              },
+              {
+                "id": "3",
+                "title": {
+                  "en": "AudsyncMC",
+                  "da": "AudsyncMC"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Google Cast",
+                  "da": "Google Cast"
                 }
               },
               {
@@ -369,6 +397,13 @@
           "title": {
             "en": "AudsyncMC",
             "da": "AudsyncMC"
+          }
+        },
+        {
+          "id": "4",
+          "title": {
+            "en": "Google Cast",
+            "da": "Google Cast"
           }
         },
         {

@@ -1,0 +1,10 @@
+{
+	"name": "Node.js & TypeScript & Homey CLI",
+	"features": {
+		"ghcr.io/flexwie/devcontainer-features/op:1": {}
+	},
+	
+	"build": { 
+		"dockerfile": "Containerfile" 
+	}
+}
