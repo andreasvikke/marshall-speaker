@@ -10,5 +10,8 @@
   },
   "2.1.0": {
     "en": "Added availability healthcheck, and general bugfixes."
+  },
+  "2.1.1": {
+    "en": "Bug fix: added id 4 to capability"
   }
 }
